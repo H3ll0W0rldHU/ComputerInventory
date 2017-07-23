@@ -118,11 +118,11 @@ public class EditorActivity extends AppCompatActivity implements
         String priceString = mPriceEditText.getText().toString().trim();
         String supplierNameString = mSupplierNameEditText.getText().toString().trim();
         String supplierEmailString = mSupplierEmailEditText.getText().toString().trim();
+
         mSupplierEmail = supplierEmailString;
 
-        if (mCurrentComponentUri == null &&
-                TextUtils.isEmpty(componentNameString) || TextUtils.isEmpty(priceString) ||
-                mCurrentQuantity == 0 || TextUtils.isEmpty(supplierNameString) || TextUtils.isEmpty(supplierEmailString)) {
+        if (TextUtils.isEmpty(componentNameString) || TextUtils.isEmpty(priceString) ||
+                mCurrentQuantity == 0 || TextUtils.isEmpty(supplierNameString) || TextUtils.isEmpty(supplierEmailString) || imageUri == null) {
             Toast.makeText(this, getString(R.string.please_fill_all_fields),
                     Toast.LENGTH_SHORT).show();
             return;
@@ -146,6 +146,7 @@ public class EditorActivity extends AppCompatActivity implements
             } else {
                 Toast.makeText(this, getString(R.string.editor_insert_component_successful),
                         Toast.LENGTH_SHORT).show();
+                finish();
             }
         } else {
 
@@ -157,6 +158,7 @@ public class EditorActivity extends AppCompatActivity implements
             } else {
                 Toast.makeText(this, getString(R.string.editor_update_component_successful),
                         Toast.LENGTH_SHORT).show();
+                finish();
             }
         }
     }
@@ -182,7 +184,6 @@ public class EditorActivity extends AppCompatActivity implements
         switch (item.getItemId()) {
             case R.id.action_save:
                 saveComponent();
-                finish();
                 return true;
             case R.id.action_delete:
                 showDeleteConfirmationDialog();
@@ -320,13 +321,7 @@ public class EditorActivity extends AppCompatActivity implements
                 deleteComponent();
             }
         });
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                if (dialog != null) {
-                    dialog.dismiss();
-                }
-            }
-        });
+        builder.setNegativeButton(R.string.cancel, null);
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
