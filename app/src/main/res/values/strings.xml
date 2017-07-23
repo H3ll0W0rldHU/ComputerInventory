@@ -29,6 +29,7 @@
     <string name="editor_insert_component_failed">Error with saving component</string>
     <string name="editor_update_component_successful">Component updated</string>
     <string name="editor_update_component_failed">Error with updating component</string>
+    <string name="please_fill_all_fields">Please fill all fields.</string>
 
     <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
     <string name="discard">Discard</string>

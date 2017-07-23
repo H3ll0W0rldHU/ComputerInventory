@@ -121,9 +121,10 @@ public class EditorActivity extends AppCompatActivity implements
         mSupplierEmail = supplierEmailString;
 
         if (mCurrentComponentUri == null &&
-                TextUtils.isEmpty(componentNameString) && TextUtils.isEmpty(priceString) &&
-                mCurrentQuantity == 0 && TextUtils.isEmpty(supplierNameString) && TextUtils.isEmpty(supplierEmailString)) {
-
+                TextUtils.isEmpty(componentNameString) || TextUtils.isEmpty(priceString) ||
+                mCurrentQuantity == 0 || TextUtils.isEmpty(supplierNameString) || TextUtils.isEmpty(supplierEmailString)) {
+            Toast.makeText(this, getString(R.string.please_fill_all_fields),
+                    Toast.LENGTH_SHORT).show();
             return;
         }
 

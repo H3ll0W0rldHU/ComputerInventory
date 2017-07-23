@@ -22,7 +22,7 @@ public class ComponentDbHelper extends SQLiteOpenHelper {
                 + ComponentEntry.COLUMN_COMPONENT_QUANTITY + " INTEGER NOT NULL DEFAULT 0,"
                 + ComponentEntry.COLUMN_SUPPLIER_NAME + " TEXT NOT NULL,"
                 + ComponentEntry.COLUMN_SUPPLIER_EMAIL + " TEXT NOT NULL,"
-                + ComponentEntry.COLUMN_COMPONENT_IMAGE + " TEXT)";
+                + ComponentEntry.COLUMN_COMPONENT_IMAGE + " TEXT NOT NULL)";
 
         db.execSQL(SQL_CREATE_COMPONENTS_TABLE);
     }
